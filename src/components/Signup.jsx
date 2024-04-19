@@ -7,6 +7,8 @@ export default function Signup() {
     const data = Object.fromEntries(fd.entries()); //creates an object with keys as 'name' and value as form inputs
     data.acquisition = acquisitionChannel;
     console.log(data);
+
+    // event.target.reset(); to reset the form
   }
 
   return (

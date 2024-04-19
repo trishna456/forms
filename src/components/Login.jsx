@@ -1,11 +1,13 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Login() {
-  /*
   const [enteredValues, setEnteredValues] = useState({
     email: "",
     password: "",
   });
+
+  const emailIsInvalid =
+    enteredValues.email !== "" && !enteredValues.email.includes("@");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -19,8 +21,8 @@ export default function Login() {
       [identifier]: value,
     }));
   }
-  */
 
+  /*
   function handleSubmit(event) {
     event.preventDefault();
     console.log("Entered email:", email.current.value);
@@ -29,6 +31,7 @@ export default function Login() {
 
   const email = useRef();
   const password = useRef();
+*/
 
   return (
     <form onSubmit={handleSubmit}>
@@ -41,15 +44,27 @@ export default function Login() {
             id="email"
             type="email"
             name="email"
-            ref={email}
-            //value={enteredValues.email}
-            //onChange={(event) => handleInputChange("email", event.target.value)}
+            //ref={email}
+            value={enteredValues.email}
+            onChange={(event) => handleInputChange("email", event.target.value)}
           />
+          <div className="control-error">
+            {emailIsInvalid && <p>Please include a valid email address</p>}
+          </div>
         </div>
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" ref={password} />
+          <input
+            id="password"
+            type="password"
+            name="password"
+            //ref={password}
+            value={enteredValues.password}
+            onChange={(event) =>
+              handleInputChange("password", event.target.value)
+            }
+          />
         </div>
       </div>
 
